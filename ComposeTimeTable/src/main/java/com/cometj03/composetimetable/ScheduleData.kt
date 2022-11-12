@@ -1,24 +1,21 @@
 package com.cometj03.composetimetable
 
-import java.time.DayOfWeek
+import androidx.compose.ui.graphics.Color
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
-data class ScheduleGraphData(
-    val scheduleCellData: List<ScheduleCellData>
-) {
-    val dayOfWeek: DayOfWeek by lazy {
-        scheduleCellData.first().startTime.dayOfWeek
-    }
-}
+data class ScheduleDayData(
+    val schedules: List<ScheduleData>,
+)
 
-data class ScheduleCellData(
+data class ScheduleData(
     val name: String,
     val description: String,
     val startTime: LocalDateTime,
-    val endTime: LocalDateTime
+    val endTime: LocalDateTime,
+    val color: Color = Color.Gray,
 ) {
-    val minutesLength: Long by lazy {
-        ChronoUnit.MINUTES.between(startTime, endTime)
+    val durationInHours: Float by lazy {
+        ChronoUnit.MINUTES.between(startTime, endTime) / 60f
     }
 }
