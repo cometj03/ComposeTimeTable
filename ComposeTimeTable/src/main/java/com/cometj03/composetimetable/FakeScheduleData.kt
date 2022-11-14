@@ -7,14 +7,17 @@ import java.time.LocalTime
 // For Just Test
 val mondayDate = LocalDate.of(2022, 11, 7)
 
-val scheduleData = listOf(
-    ScheduleDayData(
-        listOf(
-            ScheduleData(
-                "컴수",
-                "정보관 201호",
-                LocalDateTime.of(mondayDate, LocalTime.of(13, 30)),
-                LocalDateTime.of(mondayDate, LocalTime.of(15, 0))
+val timeTableData = TimeTableData(
+    listOf(
+        ScheduleDayData(
+            LocalDateTime.of(mondayDate, LocalTime.of(0, 0)),
+            listOf(
+                ScheduleEntity(
+                    "컴수",
+                    "정보관 201호",
+                    LocalDateTime.of(mondayDate, LocalTime.of(13, 30)),
+                    LocalDateTime.of(mondayDate, LocalTime.of(15, 0))
+                )
             )
         )
     )

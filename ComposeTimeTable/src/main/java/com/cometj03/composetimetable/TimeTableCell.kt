@@ -14,8 +14,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 private fun TimeTableCell(
-    cellData: ScheduleData,
-    onClick: (ScheduleData) -> Unit = {},
+    cellData: ScheduleEntity,
+    onClick: (ScheduleEntity) -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -25,8 +25,7 @@ private fun TimeTableCell(
                 vertical = 8.dp,
                 horizontal = 4.dp
             )
-            .clickable { onClick(cellData) },
-        horizontalAlignment = Alignment.CenterHorizontally
+            .clickable { onClick(cellData) }
     ) {
         Text(text = cellData.name)
         Spacer(Modifier.height(4.dp))
@@ -37,7 +36,7 @@ private fun TimeTableCell(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ScheduleTimeCellPreview() {
-    val data = scheduleData.get(0).schedules.get(0)
+    val data = timeTableData.scheduleDayData.get(0).scheduleEntities.get(0)
 
     Row(Modifier.fillMaxWidth()) {
         repeat(7) {

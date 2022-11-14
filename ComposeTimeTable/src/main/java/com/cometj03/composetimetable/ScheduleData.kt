@@ -4,11 +4,25 @@ import androidx.compose.ui.graphics.Color
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 
-data class ScheduleDayData(
-    val schedules: List<ScheduleData>,
-)
+data class TimeTableData(
+    val scheduleDayData: List<ScheduleDayData>
+) {
+    val earliestStartHour: Int by lazy {
+        scheduleDayData.minOf { it.startDate.hour }
+    }
+    val latestEndHour: Int by lazy {
+        scheduleDayData.maxOf { it.scheduleEntities.last().endTime.hour }
+    }
+}
 
-data class ScheduleData(
+data class ScheduleDayData(
+    val startDate: LocalDateTime,
+    val scheduleEntities: List<ScheduleEntity>,
+) {
+
+}
+
+data class ScheduleEntity(
     val name: String,
     val description: String,
     val startTime: LocalDateTime,

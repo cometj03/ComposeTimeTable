@@ -8,10 +8,3 @@ fun TimeTable(
 ) {
 
 }
-
-@Composable
-fun TimeTableColumn(
-    data: ScheduleDayData,
-) {
-
-}
