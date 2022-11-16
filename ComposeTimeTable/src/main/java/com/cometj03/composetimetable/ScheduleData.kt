@@ -8,18 +8,20 @@ data class TimeTableData(
     val scheduleDayData: List<ScheduleDayData>
 ) {
     val earliestStartHour: Int by lazy {
-        scheduleDayData.minOf { it.startDate.hour }
+        scheduleDayData.minOf { it.startTimeOfDay.hour }
     }
     val latestEndHour: Int by lazy {
-        scheduleDayData.maxOf { it.scheduleEntities.last().endTime.hour }
+        scheduleDayData.maxOf { it.endTimeOfDay.hour }
     }
 }
 
 data class ScheduleDayData(
-    val startDate: LocalDateTime,
+    val startTimeOfDay: LocalDateTime,
     val scheduleEntities: List<ScheduleEntity>,
 ) {
-
+    val endTimeOfDay: LocalDateTime by lazy {
+        scheduleEntities.last().endTime
+    }
 }
 
 data class ScheduleEntity(

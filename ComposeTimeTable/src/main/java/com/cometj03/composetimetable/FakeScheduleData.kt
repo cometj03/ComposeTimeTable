@@ -17,6 +17,12 @@ val timeTableData = TimeTableData(
                     "정보관 201호",
                     LocalDateTime.of(mondayDate, LocalTime.of(13, 30)),
                     LocalDateTime.of(mondayDate, LocalTime.of(15, 0))
+                ),
+                ScheduleEntity(
+                    "컴수",
+                    "정보관 201호",
+                    LocalDateTime.of(mondayDate, LocalTime.of(17, 30)),
+                    LocalDateTime.of(mondayDate, LocalTime.of(19, 0))
                 )
             )
         )
