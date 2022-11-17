@@ -2,8 +2,12 @@ package com.cometj03.composetimetable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,16 +25,20 @@ fun TimeTableCell(
 ) {
     Column(
         modifier = modifier
-            .height(80.dp)
-            .width(80.dp)
-            .clip(RoundedCornerShape(2.dp))
+            .clip(RoundedCornerShape(4.dp))
             .background(cellData.color)
-            .padding(4.dp)
             .clickable { onClick(cellData) }
+            .padding(4.dp)
     ) {
-        Text(text = cellData.name)
-        Spacer(Modifier.height(4.dp))
-        Text(text = cellData.description)
+        Text(
+            text = cellData.name,
+            style = MaterialTheme.typography.caption
+        )
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = cellData.description,
+            style = MaterialTheme.typography.overline
+        )
     }
 }
 
@@ -44,10 +52,12 @@ class TimeTableParentData(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ScheduleTimeCellPreview() {
-    val data = timeTableData.scheduleDayData.get(0).scheduleEntities.get(0)
+    val data = timeTableData.scheduleDayData.get(0).scheduleEntities.get(1)
 
-    Row(Modifier.fillMaxWidth()) {
-        repeat(7) {
+    Row(
+        Modifier.fillMaxWidth()
+    ) {
+        repeat(5) {
             TimeTableCell(cellData = data)
         }
     }

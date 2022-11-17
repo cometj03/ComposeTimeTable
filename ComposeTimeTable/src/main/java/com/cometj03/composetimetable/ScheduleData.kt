@@ -16,9 +16,11 @@ data class TimeTableData(
 }
 
 data class ScheduleDayData(
-    val startTimeOfDay: LocalDateTime,
     val scheduleEntities: List<ScheduleEntity>,
 ) {
+    val startTimeOfDay: LocalDateTime by lazy {
+        scheduleEntities.first().startTime
+    }
     val endTimeOfDay: LocalDateTime by lazy {
         scheduleEntities.last().endTime
     }

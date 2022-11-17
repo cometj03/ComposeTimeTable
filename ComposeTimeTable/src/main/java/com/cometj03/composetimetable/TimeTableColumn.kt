@@ -1,12 +1,14 @@
 package com.cometj03.composetimetable
 
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.temporal.ChronoUnit
 import kotlin.math.roundToInt
 
@@ -25,7 +27,6 @@ fun TimeTableColumn(
         modifier = modifier,
         content = timeCells
     ) { measurables, constraints ->
-
         // Measure Step
         var totalHeight = 0
 
@@ -66,13 +67,13 @@ fun TimeTableColumn(
 object TimeTableColumnScope {
     @Stable
     fun Modifier.timeTableCell(
-        beforeCellEnd: LocalDateTime,
+        beforeCellEndTime: LocalDateTime,
         start: LocalDateTime,
         end: LocalDateTime,
         hoursLabelSize: Int,
     ): Modifier {
         val durationInHours = ChronoUnit.MINUTES.between(start, end) / 60f
-        val offset = ChronoUnit.MINUTES.between(beforeCellEnd, start) / 60f
+        val offset = ChronoUnit.MINUTES.between(beforeCellEndTime, start) / 60f
 
         return then(
             TimeTableParentData(
@@ -83,7 +84,7 @@ object TimeTableColumnScope {
     }
 }
 
-@Preview(showSystemUi = true)
+@Preview
 @Composable
 fun TimeTableColumnPreview() {
     val scheduleData = timeTableData.scheduleDayData[0].scheduleEntities
@@ -93,24 +94,28 @@ fun TimeTableColumnPreview() {
 
     TimeTableColumn(
         cellCount = scheduleData.size,
-        hoursLabelHeight = 2500,
+        hoursLabelHeight = 2000,
         timeCell = {
             val data = scheduleData[it]
-            val beforeCellEnd = if (it == 0) {
-                data.startTime
+            val beforeCellEndTime = if (it == 0) {
+                LocalDateTime.of(
+                    data.startTime.toLocalDate(),
+                    LocalTime.of(hours.first(), 0)
+                )
             } else {
                 scheduleData[it - 1].endTime
             }
             TimeTableCell(
                 cellData = data,
-                modifier = Modifier.timeTableCell(
-                    data.startTime,
-                    data.startTime,
-                    data.endTime,
-                    hours.size
-                )
+                modifier = Modifier
+                    .requiredWidth(80.dp)
+                    .timeTableCell(
+                        beforeCellEndTime,
+                        data.startTime,
+                        data.endTime,
+                        hours.size
+                    )
             )
-        },
-        modifier = Modifier.fillMaxSize()
+        }
     )
 }

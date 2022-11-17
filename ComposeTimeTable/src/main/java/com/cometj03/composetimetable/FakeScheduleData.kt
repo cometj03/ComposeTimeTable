@@ -10,18 +10,23 @@ val mondayDate = LocalDate.of(2022, 11, 7)
 val timeTableData = TimeTableData(
     listOf(
         ScheduleDayData(
-            LocalDateTime.of(mondayDate, LocalTime.of(0, 0)),
             listOf(
                 ScheduleEntity(
-                    "컴수",
+                    "확률과 통계",
+                    "정보관 201호",
+                    LocalDateTime.of(mondayDate, LocalTime.of(10, 30)),
+                    LocalDateTime.of(mondayDate, LocalTime.of(11, 45))
+                ),
+                ScheduleEntity(
+                    "컴퓨터수학2",
                     "정보관 201호",
                     LocalDateTime.of(mondayDate, LocalTime.of(13, 30)),
                     LocalDateTime.of(mondayDate, LocalTime.of(15, 0))
                 ),
                 ScheduleEntity(
-                    "컴수",
-                    "정보관 201호",
-                    LocalDateTime.of(mondayDate, LocalTime.of(17, 30)),
+                    "사용자 인터페이스 및 실습 (다)",
+                    "정보관 205호",
+                    LocalDateTime.of(mondayDate, LocalTime.of(16, 30)),
                     LocalDateTime.of(mondayDate, LocalTime.of(19, 0))
                 )
             )
