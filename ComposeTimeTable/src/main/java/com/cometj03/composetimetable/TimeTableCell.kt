@@ -2,10 +2,7 @@ package com.cometj03.composetimetable
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.scrollable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -20,14 +17,15 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TimeTableCell(
     cellData: ScheduleEntity,
+    onCellClick: (ScheduleEntity) -> Unit,
     modifier: Modifier = Modifier,
-    onClick: (ScheduleEntity) -> Unit = {},
 ) {
     Column(
         modifier = modifier
+            .width(tableColumnWidth)
             .clip(RoundedCornerShape(4.dp))
             .background(cellData.color)
-            .clickable { onClick(cellData) }
+            .clickable { onCellClick(cellData) }
             .padding(4.dp)
     ) {
         Text(
@@ -52,13 +50,13 @@ class TimeTableParentData(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ScheduleTimeCellPreview() {
-    val data = timeTableData.scheduleDayData.get(0).scheduleEntities.get(1)
+    val entities = timeTableData.scheduleDayDataList[0].scheduleEntities
 
     Row(
         Modifier.fillMaxWidth()
     ) {
-        repeat(5) {
-            TimeTableCell(cellData = data)
+        repeat(3) {
+            TimeTableCell(cellData = entities[it], onCellClick = {})
         }
     }
 }
