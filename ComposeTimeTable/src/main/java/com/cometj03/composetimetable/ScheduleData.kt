@@ -43,8 +43,4 @@ data class ScheduleEntity(
     val startTime: LocalDateTime,
     val endTime: LocalDateTime,
     val color: Color = Color.Gray,
-) {
-    val durationInHours: Float by lazy {
-        ChronoUnit.MINUTES.between(startTime, endTime) / 60f
-    }
-}
+)

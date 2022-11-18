@@ -4,10 +4,9 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
-// For Just Test
-internal val mondayDate = LocalDate.of(2022, 11, 7)
+val mondayDate: LocalDate = LocalDate.of(2022, 11, 7)
 
-internal val timeTableData = TimeTableData(
+val timeTableData = TimeTableData(
     listOf(
         ScheduleDayData(
             listOf(
