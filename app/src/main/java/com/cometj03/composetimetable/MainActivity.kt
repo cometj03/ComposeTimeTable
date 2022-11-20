@@ -22,22 +22,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    ComposeTimeTable(
+                        dayNames = listOf("월", "화", "수", "목", "금"),
+                        timeTableData = timeTableData,
+                        onCellClick = {
+
+                        }
+                    )
                 }
             }
         }
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+fun test() {
+    ComposeTimeTable(
+        dayNames = listOf("월", "화", "수", "목", "금"),
+        timeTableData = timeTableData,
+        onCellClick = {
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ComposeTimeTableTheme {
-        Greeting("Android")
-    }
+        }
+    )
 }
