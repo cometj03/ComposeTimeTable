@@ -20,7 +20,8 @@ fun TimeTable(
     modifier: Modifier = Modifier,
 ) {
     require(columnCount == cellCountList.size) {
-        "columnCount should be equal to cellCountList's size"
+        "columnCount should be equal to cellCountList's size\n" +
+                "cellCountList의 길이는 columnCount의 값과 같아야 합니다"
     }
 
     val dayHeaders = @Composable {
@@ -41,7 +42,8 @@ fun TimeTable(
         constraints ->
 
         require(hoursLabelMeasurables.size == 1) {
-            "hoursLabel should emit only one composable"
+            "hoursLabel should emit only one composable\n" +
+                    "hoursLabel은 하나의 composable 함수로 구성되어야 합니다"
         }
 
         val hoursLabelPlaceable = hoursLabelMeasurables.first().measure(constraints)

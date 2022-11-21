@@ -27,7 +27,8 @@ fun ComposeTimeTable(
     val cellCountList = timeTableData.entitiesCountList
 
     require(dayNames.size == cellCountList.size) {
-        "size of dayNames should be equal to count of scheduleEntities"
+        "size of dayNames should be equal to count of scheduleEntities\n" +
+                "dayNames의 길이와 timeTableData.scheduleEntities의 길이가 같아야 합니다"
     }
 
     // Box로 한 번 감싸주지 않으면 실제로 적용했을 때 레이아웃이 제대로 보이지 않는 버그가 있음
