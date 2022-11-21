@@ -22,7 +22,6 @@ fun TimeTableCell(
 ) {
     Column(
         modifier = modifier
-            .width(tableColumnWidth)
             .clip(RoundedCornerShape(4.dp))
             .background(cellData.color)
             .clickable { onCellClick(cellData) }

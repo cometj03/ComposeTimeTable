@@ -33,44 +33,43 @@ fun ComposeTimeTable(
 
     // Box로 한 번 감싸주지 않으면 실제로 적용했을 때 레이아웃이 제대로 보이지 않는 버그가 있음
     // TODO: 원인 찾기
-    Box {
-        TimeTable(
-            columnCount = cellCountList.size,
-            dayHeader = {
-                DayHeader(dayNames[it])
-            },
-            hoursLabel = {
-                HoursLabel(hours)
-            },
-            cellCountList = cellCountList,
-            timeCell = { column, index ->
-                val dayData = timeTableData.scheduleDayDataList[column]
-                val scheduleEntity = dayData.scheduleEntities[index]
+    TimeTable(
+        columnCount = cellCountList.size,
+        dayHeader = {
+            DayHeader(dayNames[it])
+        },
+        hoursLabel = {
+            HoursLabel(hours)
+        },
+        cellCountList = cellCountList,
+        timeCell = { column, index ->
+            val dayData = timeTableData.scheduleDayDataList[column]
+            val scheduleEntity = dayData.scheduleEntities[index]
 
-                val beforeCellEndTime = if (index == 0) {
-                    LocalDateTime.of(
-                        scheduleEntity.startTime.toLocalDate(),
-                        LocalTime.of(hours.first(), 0)
-                    )
-                } else {
-                    dayData.scheduleEntities[index - 1].endTime
-                }
-
-                TimeTableCell(
-                    cellData = scheduleEntity,
-                    onCellClick = onCellClick,
-                    modifier = Modifier
-                        .timeTableCell(
-                            beforeCellEndTime,
-                            scheduleEntity.startTime,
-                            scheduleEntity.endTime,
-                            hours.size
-                        )
+            val beforeCellEndTime = if (index == 0) {
+                LocalDateTime.of(
+                    scheduleEntity.startTime.toLocalDate(),
+                    LocalTime.of(hours.first(), 0)
                 )
-            },
-            modifier = modifier
-        )
-    }
+            } else {
+                dayData.scheduleEntities[index - 1].endTime
+            }
+
+            TimeTableCell(
+                cellData = scheduleEntity,
+                onCellClick = onCellClick,
+                modifier = Modifier
+                    .padding(minBorderWidth)
+                    .timeTableCell(
+                        beforeCellEndTime,
+                        scheduleEntity.startTime,
+                        scheduleEntity.endTime,
+                        hours.size
+                    )
+            )
+        },
+        modifier = modifier
+    )
 }
 
 @Composable
@@ -79,7 +78,6 @@ fun DayHeader(dayName: String) {
         text = dayName,
         style = MaterialTheme.typography.subtitle1, // TODO: TextStyle
         modifier = Modifier
-            .width(tableColumnWidth)
             .padding(vertical = 4.dp),
         textAlign = TextAlign.Center
     )
@@ -108,7 +106,7 @@ fun HoursLabelPreview() {
     HoursLabel(hours = (9..16).toList())
 }
 
-@Preview
+@Preview(widthDp = 300)
 @Composable
 fun TimeTablePreview() {
     val dayNames = listOf("월", "화", "수", "목", "금")

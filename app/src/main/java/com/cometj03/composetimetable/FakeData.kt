@@ -45,6 +45,17 @@ val timeTableData = TimeTableData(
                 )
             )
         ),
-        ScheduleDayData()
+        ScheduleDayData(),
+        ScheduleDayData(),
+        ScheduleDayData(
+            listOf(
+                ScheduleEntity(
+                    "확률과 통계",
+                    "정보관 201호",
+                    LocalDateTime.of(mondayDate, LocalTime.of(10, 30)),
+                    LocalDateTime.of(mondayDate, LocalTime.of(11, 45))
+                )
+            )
+        )
     )
 )

@@ -16,13 +16,12 @@ class TestActivity : AppCompatActivity() {
             setViewCompositionStrategy(DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 ComposeTimeTable(
-                    dayNames = listOf("월", "화", "수", "목", "금"),
+                    dayNames = listOf("월", "화", "수", "목", "금", "토", "일"),
                     timeTableData = timeTableData,
                     onCellClick = {
                         showToast(it.name)
                     }
                 )
-                Text(text = "ComposeView")
             }
         }
     }
