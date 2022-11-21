@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ParentDataModifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
@@ -29,12 +30,13 @@ fun TimeTableCell(
     ) {
         Text(
             text = cellData.name,
-            style = MaterialTheme.typography.caption
+            style = MaterialTheme.typography.caption,
+            fontWeight = FontWeight.Bold
         )
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(4.dp))
         Text(
             text = cellData.description,
-            style = MaterialTheme.typography.overline
+            style = MaterialTheme.typography.caption
         )
     }
 }

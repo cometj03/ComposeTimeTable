@@ -1,10 +1,14 @@
 package com.cometj03.composetimetable
 
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
 import java.time.LocalDateTime
@@ -37,13 +41,14 @@ fun TimeTable(
         }
     }
 
-    BoxWithConstraints {
+    BoxWithConstraints(
+        modifier = modifier.fillMaxWidth()
+    ) {
 
         val parentWidth = constraints.minWidth
 
         Layout(
-            contents = listOf(dayHeaders, hoursLabel, timeCells),
-            modifier = modifier,
+            contents = listOf(dayHeaders, hoursLabel, timeCells)
         ) { (dayHeaderMeasurables, hoursLabelMeasurables, timeCellMeasurables),
             constraints ->
 

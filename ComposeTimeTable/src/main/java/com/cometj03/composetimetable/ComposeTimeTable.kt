@@ -1,10 +1,15 @@
 package com.cometj03.composetimetable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -79,14 +84,16 @@ fun DayHeader(dayName: String) {
         style = MaterialTheme.typography.subtitle1, // TODO: TextStyle
         modifier = Modifier
             .padding(vertical = 4.dp),
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+        fontWeight = FontWeight.Bold
     )
 }
 
 @Composable
 fun HoursLabel(hours: List<Int>) {
-    Column {
+    Column(Modifier.width(IntrinsicSize.Min)) {
         hours.forEach {
+            Divider()
             Text(
                 text = "$it",
                 style = MaterialTheme.typography.caption,
@@ -110,9 +117,16 @@ fun HoursLabelPreview() {
 @Composable
 fun TimeTablePreview() {
     val dayNames = listOf("월", "화", "수", "목", "금")
-    ComposeTimeTable(
-        dayNames = dayNames,
-        timeTableData = timeTableData,
-        onCellClick = {}
-    )
+    val scrollState = rememberScrollState()
+
+    Column(Modifier.height(200.dp)) {
+        ComposeTimeTable(
+            dayNames = dayNames,
+            timeTableData = timeTableData,
+            onCellClick = {},
+            modifier = Modifier
+                .verticalScroll(scrollState)
+                .wrapContentSize()
+        )
+    }
 }
