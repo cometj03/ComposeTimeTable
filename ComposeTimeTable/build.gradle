@@ -1,7 +1,34 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'maven-publish'
 }
+//
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                // Applies the component for the release build variant.
+//                from components.release
+//
+//                // You can then customize attributes of the publication as shown below.
+//                groupId = 'com.cometj03.compose-timetable'
+//                artifactId = 'final'
+//                version = '0.0.1'
+//            }
+//            // Creates a Maven publication called “debug”.
+//            debug(MavenPublication) {
+//                // Applies the component for the debug build variant.
+//                from components.debug
+//
+//                groupId = 'com.cometj03.compose-timetable'
+//                artifactId = 'final-debug'
+//                version = '0.0.1'
+//            }
+//        }
+//    }
+//}
 
 android {
     namespace 'com.cometj03.composetimetable'
