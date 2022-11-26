@@ -115,10 +115,10 @@ fun HoursLabelPreview() {
 @Preview(widthDp = 300)
 @Composable
 fun TimeTablePreview() {
-    val dayNames = listOf("월", "화", "수", "목", "금")
+    val dayNames = listOf("월", "화", "수", "목", "금", "토", "일")
     val scrollState = rememberScrollState()
 
-    Column(Modifier.height(200.dp)) {
+    Column {
         ComposeTimeTable(
             dayNames = dayNames,
             timeTableData = timeTableData,
