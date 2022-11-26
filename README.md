@@ -4,11 +4,11 @@
 
 ComposeTimeTable is customizable (not yet) and flexiable timetable based on [Jetpack Compose](https://developer.android.com/jetpack/compose)
 
-## Layout Preview
+## Preview
 
-////
+..
 
-## Gradle Setting (Jitpack)
+## Download
 
 **Step 1.** Add the JitPack repository to your build file
 
@@ -30,3 +30,6 @@ dependencies {
     implementation "com.github.cometj03:ComposeTimeTable:$latest_timetable_version"
 }
 ```
+
+## Usage
+..
