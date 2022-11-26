@@ -1,6 +1,14 @@
 [![](https://jitpack.io/v/cometj03/ComposeTimeTable.svg)](https://jitpack.io/#cometj03/ComposeTimeTable)
 
-## Jitpack Setting (Gradle)
+# ComposeTimeTable
+
+ComposeTimeTable is customizable (not yet) and flexiable timetable based on [Jetpack Compose](https://developer.android.com/jetpack/compose)
+
+## Layout Preview
+
+////
+
+## Gradle Setting (Jitpack)
 
 **Step 1.** Add the JitPack repository to your build file
 
