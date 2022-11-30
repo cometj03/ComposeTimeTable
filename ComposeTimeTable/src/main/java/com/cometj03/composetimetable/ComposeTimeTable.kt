@@ -19,6 +19,18 @@ import kotlin.math.min
 
 @Composable
 fun ComposeTimeTable(
+    timeTableData: TimeTableData,
+    onCellClick: (ScheduleEntity) -> Unit,
+    modifier: Modifier = Modifier,
+) = ComposeTimeTable(
+    dayNames = timeTableData.dayNameList,
+    timeTableData = timeTableData,
+    onCellClick = onCellClick,
+    modifier = modifier
+)
+
+@Composable
+fun ComposeTimeTable(
     dayNames: List<String>,
     timeTableData: TimeTableData,
     onCellClick: (ScheduleEntity) -> Unit,
@@ -115,12 +127,11 @@ fun HoursLabelPreview() {
 @Preview(widthDp = 300)
 @Composable
 fun TimeTablePreview() {
-    val dayNames = listOf("월", "화", "수", "목", "금", "토", "일")
+    //val dayNames = listOf("월", "화", "수", "목", "금", "토", "일")
     val scrollState = rememberScrollState()
 
     Column {
         ComposeTimeTable(
-            dayNames = dayNames,
             timeTableData = timeTableData,
             onCellClick = {},
             modifier = Modifier

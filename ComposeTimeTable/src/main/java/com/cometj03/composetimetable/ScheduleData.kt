@@ -20,13 +20,15 @@ data class TimeTableData(
         }
     }
     val entitiesCountList: List<Int> by lazy {
-        List(scheduleDayDataList.size) {
-            scheduleDayDataList[it].scheduleEntities.size
-        }
+        scheduleDayDataList.map { it.scheduleEntities.size }
+    }
+    val dayNameList: List<String> by lazy {
+        scheduleDayDataList.map { it.dayName }
     }
 }
 
 data class ScheduleDayData(
+    val dayName: String,
     val scheduleEntities: List<ScheduleEntity> = emptyList(),
 ) {
     val startTimeOfDay: LocalDateTime by lazy {
