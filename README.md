@@ -6,7 +6,13 @@ ComposeTimeTable is customizable (not yet) and flexiable timetable based on [Jet
 
 ## Preview
 
-..
+<img src="./preview1.png" width="250">
+
+Column count: 5
+
+<img src="./preview2.png" width="250">
+
+Column count: 7
 
 ## Download
 
