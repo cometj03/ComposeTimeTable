@@ -33,7 +33,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    implementation "com.github.cometj03:ComposeTimeTable:$latest_timetable_version"
+    implementation "com.github.cometj03:ComposeTimeTable:final:$latest_timetable_version"
 }
 ```
 
