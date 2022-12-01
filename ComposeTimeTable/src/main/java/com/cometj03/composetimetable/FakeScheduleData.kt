@@ -6,8 +6,6 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 
 // For Just Test
-internal val dateNow = LocalDate.now()
-
 internal val timeTableData = TimeTableData(
     listOf(
         ScheduleDayData(
@@ -16,8 +14,8 @@ internal val timeTableData = TimeTableData(
                 ScheduleEntity(
                     "컴퓨터수학2",
                     "정보관 201호",
-                    LocalDateTime.of(dateNow, LocalTime.of(13, 30)),
-                    LocalDateTime.of(dateNow, LocalTime.of(15, 0)),
+                    LocalTime.of(13, 30),
+                    LocalTime.of(15, 0),
                     Color(0xFFF58284)
                 )
             )
@@ -28,15 +26,15 @@ internal val timeTableData = TimeTableData(
                 ScheduleEntity(
                     "APE 2",
                     "진리관 103호",
-                    LocalDateTime.of(dateNow, LocalTime.of(11, 0)),
-                    LocalDateTime.of(dateNow, LocalTime.of(12, 30)),
+                    LocalTime.of(11, 0),
+                    LocalTime.of(12, 30),
                     Color(0xFFF5F39B)
                 ),
                 ScheduleEntity(
                     "사용자 인터페이스 및 실습 (다)",
                     "정보관 205호",
-                    LocalDateTime.of(dateNow, LocalTime.of(15, 0)),
-                    LocalDateTime.of(dateNow, LocalTime.of(16, 50)),
+                    LocalTime.of(15, 0),
+                    LocalTime.of(16, 50),
                     Color(0xFFB3DCF5)
                 )
             )
@@ -48,13 +46,13 @@ internal val timeTableData = TimeTableData(
                 ScheduleEntity(
                     "확률과 통계",
                     "정보관 201호",
-                    LocalDateTime.of(dateNow, LocalTime.of(10, 30)),
-                    LocalDateTime.of(dateNow, LocalTime.of(11, 45)),
+                    LocalTime.of(10, 30),
+                    LocalTime.of(11, 45),
                     Color(0xFFA86263)
                 )
             )
         ),
-        ScheduleDayData("금",),
+        ScheduleDayData("금"),
         ScheduleDayData("토"),
         ScheduleDayData(
             "일",
@@ -62,8 +60,8 @@ internal val timeTableData = TimeTableData(
                 ScheduleEntity(
                     "확률과 통계",
                     "정보관 201호",
-                    LocalDateTime.of(dateNow, LocalTime.of(8, 30)),
-                    LocalDateTime.of(dateNow, LocalTime.of(9, 45)),
+                    LocalTime.of(8, 30),
+                    LocalTime.of(9, 45),
                     Color(0xFFA86263)
                 )
             )

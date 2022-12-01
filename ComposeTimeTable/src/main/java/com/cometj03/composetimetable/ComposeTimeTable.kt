@@ -63,10 +63,7 @@ fun ComposeTimeTable(
             val scheduleEntity = dayData.scheduleEntities[index]
 
             val beforeCellEndTime = if (index == 0) {
-                LocalDateTime.of(
-                    scheduleEntity.startTime.toLocalDate(),
-                    LocalTime.of(hours.first(), 0)
-                )
+                LocalTime.of(hours.first(), 0)
             } else {
                 dayData.scheduleEntities[index - 1].endTime
             }

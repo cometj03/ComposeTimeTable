@@ -1,8 +1,7 @@
 package com.cometj03.composetimetable
 
 import androidx.compose.ui.graphics.Color
-import java.time.LocalDateTime
-import java.time.temporal.ChronoUnit
+import java.time.LocalTime
 
 data class TimeTableData(
     val scheduleDayDataList: List<ScheduleDayData>
@@ -31,10 +30,10 @@ data class ScheduleDayData(
     val dayName: String,
     val scheduleEntities: List<ScheduleEntity> = emptyList(),
 ) {
-    val startTimeOfDay: LocalDateTime by lazy {
+    val startTimeOfDay: LocalTime by lazy {
         scheduleEntities.first().startTime
     }
-    val endTimeOfDay: LocalDateTime by lazy {
+    val endTimeOfDay: LocalTime by lazy {
         scheduleEntities.last().endTime
     }
 }
@@ -42,7 +41,7 @@ data class ScheduleDayData(
 data class ScheduleEntity(
     val name: String,
     val description: String,
-    val startTime: LocalDateTime,
-    val endTime: LocalDateTime,
+    val startTime: LocalTime,
+    val endTime: LocalTime,
     val color: Color = Color.Gray,
 )

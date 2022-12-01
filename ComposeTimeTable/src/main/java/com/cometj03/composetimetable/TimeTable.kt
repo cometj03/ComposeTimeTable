@@ -6,12 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.platform.LocalDensity
-import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.temporal.ChronoUnit
 import kotlin.math.roundToInt
 
@@ -127,9 +123,9 @@ private fun calculateColumnWidth(
 object TimeTableColumnScope {
     @Stable
     fun Modifier.timeTableCell(
-        beforeCellEndTime: LocalDateTime,
-        start: LocalDateTime,
-        end: LocalDateTime,
+        beforeCellEndTime: LocalTime,
+        start: LocalTime,
+        end: LocalTime,
         hoursLabelSize: Int,
     ): Modifier {
         val durationInHours = ChronoUnit.MINUTES.between(start, end) / 60f
