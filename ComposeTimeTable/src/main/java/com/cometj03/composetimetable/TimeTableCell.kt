@@ -47,17 +47,3 @@ class TimeTableParentData(
 ) : ParentDataModifier {
     override fun Density.modifyParentData(parentData: Any?) = this@TimeTableParentData
 }
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun ScheduleTimeCellPreview() {
-    val entities = timeTableData.scheduleDayDataList[0].scheduleEntities
-
-    Row(
-        Modifier.fillMaxWidth()
-    ) {
-        repeat(3) {
-            TimeTableCell(cellData = entities[it], onCellClick = {})
-        }
-    }
-}

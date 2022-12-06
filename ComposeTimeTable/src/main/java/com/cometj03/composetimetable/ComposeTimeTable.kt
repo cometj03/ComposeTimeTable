@@ -20,7 +20,7 @@ import kotlin.math.min
 @Composable
 fun ComposeTimeTable(
     timeTableData: TimeTableData,
-    onCellClick: (dayName: String, ScheduleEntity) -> Unit,
+    onCellClick: (column: Int, row: Int, ScheduleEntity) -> Unit,
     modifier: Modifier = Modifier,
 ) = ComposeTimeTable(
     dayNames = timeTableData.dayNameList,
@@ -33,7 +33,7 @@ fun ComposeTimeTable(
 fun ComposeTimeTable(
     dayNames: List<String>,
     timeTableData: TimeTableData,
-    onCellClick: (dayName: String, ScheduleEntity) -> Unit,
+    onCellClick: (column: Int, row: Int, ScheduleEntity) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val startHour = min(timeTableData.earliestStartHour, tableStartHour)
@@ -70,7 +70,7 @@ fun ComposeTimeTable(
 
             TimeTableCell(
                 cellData = scheduleEntity,
-                onCellClick = { entity -> onCellClick(dayNames[column], entity) },
+                onCellClick = { entity -> onCellClick(column, index, entity) },
                 modifier = Modifier
                     .padding(minBorderWidth)
                     .timeTableCell(
@@ -129,7 +129,7 @@ fun TimeTablePreview() {
     Column {
         ComposeTimeTable(
             timeTableData = timeTableData,
-            onCellClick = { _, _ -> Unit },
+            onCellClick = { _, _, _ -> },
             modifier = Modifier
                 .verticalScroll(scrollState)
                 .wrapContentSize()
