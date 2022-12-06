@@ -31,10 +31,10 @@ data class ScheduleDayData(
     val scheduleEntities: List<ScheduleEntity> = emptyList(),
 ) {
     val startTimeOfDay: LocalTime by lazy {
-        scheduleEntities.first().startTime
+        scheduleEntities.sortedBy { it.startTime }.first().startTime
     }
     val endTimeOfDay: LocalTime by lazy {
-        scheduleEntities.last().endTime
+        scheduleEntities.sortedBy { it.endTime }.last().endTime
     }
 }
 
