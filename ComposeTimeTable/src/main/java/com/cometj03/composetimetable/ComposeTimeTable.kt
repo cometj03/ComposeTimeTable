@@ -19,19 +19,7 @@ import kotlin.math.min
 
 @Composable
 fun ComposeTimeTable(
-    timeTableData: TimeTableData,
-    onCellClick: (column: Int, row: Int, ScheduleEntity) -> Unit,
-    modifier: Modifier = Modifier,
-) = ComposeTimeTable(
-    dayNames = timeTableData.dayNameList,
-    timeTableData = timeTableData,
-    onCellClick = onCellClick,
-    modifier = modifier
-)
-
-@Composable
-fun ComposeTimeTable(
-    dayNames: List<String>,
+    dayNames: Array<String>,
     timeTableData: TimeTableData,
     onCellClick: (column: Int, row: Int, ScheduleEntity) -> Unit,
     modifier: Modifier = Modifier,
@@ -47,8 +35,6 @@ fun ComposeTimeTable(
                 "dayNames의 길이와 timeTableData.scheduleEntities의 길이가 같아야 합니다"
     }
 
-    // Box로 한 번 감싸주지 않으면 실제로 적용했을 때 레이아웃이 제대로 보이지 않는 버그가 있음
-    // TODO: 원인 찾기
     TimeTable(
         columnCount = cellCountList.size,
         dayHeader = {
@@ -115,24 +101,40 @@ fun HoursLabel(hours: List<Int>) {
     }
 }
 
-@Preview
-@Composable
-fun HoursLabelPreview() {
-    HoursLabel(hours = (9..16).toList())
-}
-
-@Preview(widthDp = 300)
+@Preview(showSystemUi = true)
 @Composable
 fun TimeTablePreview() {
     val scrollState = rememberScrollState()
 
-    Column {
+    MaterialTheme {
         ComposeTimeTable(
+            dayNames = arrayOf("월", "화", "수", "목", "금", "토", "일"),
             timeTableData = timeTableData,
             onCellClick = { _, _, _ -> },
             modifier = Modifier
                 .verticalScroll(scrollState)
-                .wrapContentSize()
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun OneColumnTest() {
+    val data = TimeTableData(
+        ScheduleDayData(
+            ScheduleEntity(
+                "Test",
+                "desc",
+                LocalTime.of(10, 30),
+                LocalTime.of(13, 0)
+            )
+        )
+    )
+
+    MaterialTheme {
+        ComposeTimeTable(
+            dayNames = arrayOf("Mon"),
+            timeTableData = data,
+            onCellClick = { _, _, _ -> })
     }
 }

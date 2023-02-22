@@ -3,8 +3,8 @@ package com.cometj03.composetimetable
 import androidx.compose.ui.graphics.Color
 import java.time.LocalTime
 
-data class TimeTableData(
-    val scheduleDayDataList: List<ScheduleDayData>
+class TimeTableData(
+    vararg val scheduleDayDataList: ScheduleDayData
 ) {
     val earliestStartHour: Int by lazy {
         scheduleDayDataList.minOf {
@@ -21,14 +21,10 @@ data class TimeTableData(
     val entitiesCountList: List<Int> by lazy {
         scheduleDayDataList.map { it.scheduleEntities.size }
     }
-    val dayNameList: List<String> by lazy {
-        scheduleDayDataList.map { it.dayName }
-    }
 }
 
-data class ScheduleDayData(
-    val dayName: String,
-    val scheduleEntities: List<ScheduleEntity> = emptyList(),
+class ScheduleDayData(
+    vararg val scheduleEntities: ScheduleEntity,
 ) {
     val startTimeOfDay: LocalTime by lazy {
         scheduleEntities.sortedBy { it.startTime }.first().startTime
@@ -38,7 +34,7 @@ data class ScheduleDayData(
     }
 }
 
-data class ScheduleEntity(
+class ScheduleEntity(
     val name: String,
     val description: String,
     val startTime: LocalTime,
